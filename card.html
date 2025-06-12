@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="heart">❤️</div>
+    <h1>Feliz dia dos namorados minha pincesa</h1>
+    <p>Eu não podia estar comemorando este dia com outra pessoa, você é a melhor coisa que ja aconteceu na minha vida. Muito obrigado por ter me escolhido para dividir sua vida, eu sou muito grato por tudo que faz por mim e tenho muito orgulho da gente. Você é de longe a namorada mais incrivel, maravilhosa, linda, perfeita, gostosa que existe nesse mundo. Vou te amar pra sempre minha princesa.</p>
+
+  <div id="contador"></div>
+
+  <script>
+    const dataInicio = new Date('2023-12-17T00:00:00');
+
+    function atualizarContador() {
+      const agora = new Date();
+
+      let anos = agora.getFullYear() - dataInicio.getFullYear();
+      let meses = agora.getMonth() - dataInicio.getMonth();
+      let dias = agora.getDate() - dataInicio.getDate();
+      let horas = agora.getHours() - dataInicio.getHours();
+      let minutos = agora.getMinutes() - dataInicio.getMinutes();
+      let segundos = agora.getSeconds() - dataInicio.getSeconds();
+
+      // Corrige valores negativos "emprestando" do componente maior
+      if (segundos < 0) {
+        segundos += 60;
+        minutos--;
+      }
+      if (minutos < 0) {
+        minutos += 60;
+        horas--;
+      }
+      if (horas < 0) {
+        horas += 24;
+        dias--;
+      }
+      if (dias < 0) {
+        const ultimoMes = new Date(agora.getFullYear(), agora.getMonth(), 0);
+        dias += ultimoMes.getDate();
+        meses--;
+      }
+      if (meses < 0) {
+        meses += 12;
+        anos--;
+      }
+
+      document.getElementById('contador').textContent =
+        `Há exatos ${anos} ano, ${meses} meses, ${dias} dias, ` +
+        `${horas} horas, ${minutos} minutos e ${segundos} segundos eu fiz a melhor escolha da minha vida`;
+    }
+
+    // Atualiza a cada segundo
+    atualizarContador(); // primeira chamada
+    setInterval(atualizarContador, 1000);
+  </script>
+
+  </div>
+
+  <script src="animations.js"></script>
+</body>
+</html>
